@@ -22,7 +22,8 @@ namespace Kata
 
             var numberIncrements = new List<NumberIncrement>
             {
-                new(100, "C", null, null),
+                new(500, "D", null, null),
+                new(100, "C", 400, "CD"),
                 new(50, "L", 90, "XC"),
                 new(10, "X", 40, "XL"),
                 new(5, "V", 9, "IX"),

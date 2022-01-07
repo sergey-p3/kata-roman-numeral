@@ -106,5 +106,25 @@ namespace Kata.Tests
             roman.Should().Be(expected);
         }
         
+        [Theory]
+        [InlineData(400, "CD")]
+        [InlineData(499, "CDXCIX")]
+        public void GivenA4xx_ShouldReturnCDxx(int input, string expected)
+        {
+            var roman =  _converter.Convert(input);
+        
+            roman.Should().Be(expected);
+        }
+        
+        [Theory]
+        [InlineData(500, "D")]
+        [InlineData(849, "DCCCXLIX")]
+        public void GivenA5xx_ShouldReturnDxx(int input, string expected)
+        {
+            var roman =  _converter.Convert(input);
+        
+            roman.Should().Be(expected);
+        }
+        
     }
 }
