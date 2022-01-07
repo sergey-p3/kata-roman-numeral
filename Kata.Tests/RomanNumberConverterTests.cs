@@ -9,9 +9,10 @@ namespace Kata.Tests
         private readonly IRomanNumberConverter _converter = new RomanNumberConverter();
         
         [Fact]
-        public void GivenA0_ThrowArgumentException()
+        public void GivenA0_ShouldReturnNulla()
         {
-            Assert.Throws<ArgumentException>(() => _converter.Convert(0));
+            var result = _converter.Convert(0);
+            result.Should().Be("nulla");
         }
         
         [Fact]
@@ -31,11 +32,28 @@ namespace Kata.Tests
         [InlineData(8, "VIII")]
         [InlineData(9, "IX")]
         [InlineData(10, "X")]
-        public void GivenA1_ShouldReturnAnI(int input, string expected)
+        public void GivenALessOrEqualTo10_ShouldReturnAnI(int input, string expected)
         {
            var roman =  _converter.Convert(input);
 
            roman.Should().Be(expected);
         }
+        
+        // [Theory]
+        // [InlineData(11, "XI")]
+        // [InlineData(12, "XII")]
+        // [InlineData(13, "XIII")]
+        // [InlineData(14, "XIV")]
+        // [InlineData(15, "XV")]
+        // [InlineData(16, "XVI")]
+        // [InlineData(17, "XVII")]
+        // [InlineData(18, "XVIII")]
+        // [InlineData(19, "XIX")]
+        // public void GivenAGreaterThan10_ShouldReturnAnXPlusNumbersBelow10(int input, string expected)
+        // {
+        //    var roman =  _converter.Convert(input);
+        //
+        //    roman.Should().Be(expected);
+        // }
     }
 }
