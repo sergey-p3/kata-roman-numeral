@@ -6,9 +6,14 @@ namespace Kata
     {
         public string Convert(int i)
         {
-            if (i <= 0)
+            if (i < 0)
             {
-                throw new ArgumentException("Romans didn't understand non-positive numbers");
+                throw new ArgumentException("Romans didn't understand negative numbers");
+            }
+            
+            if (i == 0)
+            {
+                return "nulla";
             }
 
             return i switch
