@@ -69,11 +69,42 @@ namespace Kata.Tests
         [Theory]
         [InlineData(40, "XL")]
         [InlineData(49, "XLIX")]
-        public void GivenA4x_ShouldReturnXDx(int input, string expected)
+        public void GivenA4x_ShouldReturnXLx(int input, string expected)
         {
             var roman =  _converter.Convert(input);
         
             roman.Should().Be(expected);
         }
+        
+        [Theory]
+        [InlineData(50, "L")]
+        [InlineData(54, "LIV")]
+        public void GivenA5x_ShouldReturnLx(int input, string expected)
+        {
+            var roman =  _converter.Convert(input);
+        
+            roman.Should().Be(expected);
+        }
+        
+        [Theory]
+        [InlineData(90, "XC")]
+        [InlineData(99, "XCIX")]
+        public void GivenA9x_ShouldReturnLCx(int input, string expected)
+        {
+            var roman =  _converter.Convert(input);
+        
+            roman.Should().Be(expected);
+        }
+        
+        [Theory]
+        [InlineData(100, "C")]
+        [InlineData(149, "CXLIX")]
+        public void GivenA1xx_ShouldReturnLx(int input, string expected)
+        {
+            var roman =  _converter.Convert(input);
+        
+            roman.Should().Be(expected);
+        }
+        
     }
 }
