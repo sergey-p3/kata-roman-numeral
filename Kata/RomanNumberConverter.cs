@@ -18,38 +18,41 @@ namespace Kata
                 return "nulla";
             }
 
-            var l = new Dictionary<int, (int, string)>
-            {
-                [10] = (1, "X"),
-                [5] = (1, "V"),
-                [1] = (1, "I")
-            };
-
             var result = new StringBuilder();
 
-            KeyValuePair<int, (int, string)> ?prev = null;
-            foreach (KeyValuePair<int, (int, string)> x in l)
+            var numberIncrements = new List<NumberIncrement>
             {
-                if (prev != null)
-                {
-                    var prevBarrier = prev.Value.Key - prev.Value.Value.Item1;
-                    if (i >= prevBarrier)
-                    {
-                        i -= prevBarrier;
-                        result.Append(l[prev.Value.Value.Item1].Item2);
-                        result.Append(prev.Value.Value.Item2);
-                    }
-                }
+                new(50, "D", null, null),
+                new(10, "X", 40, "XD"),
+                new(5, "V", 9, "IX"),
+                new(1, "I", 4, "IV")
+            };
 
-                while (i >= x.Key)
-                {
-                    result.Append(x.Value.Item2);
-                    i -= x.Key;
-                }
-                prev = x;
+            foreach (NumberIncrement numberIncrement in numberIncrements)
+            {
+                string res;
+                (i, res) = ConvertNumberIncrement(i, numberIncrement);
+                result.Append(res);
+            }
+            
+            return result.ToString();
+        }
+
+        private (int, string) ConvertNumberIncrement(int number, NumberIncrement numberIncrement)
+        {
+            var result = new StringBuilder();
+            if (numberIncrement.UpperLimit.HasValue && number >= numberIncrement.UpperLimit)
+            {
+                number -= numberIncrement.UpperLimit.Value;
+                result.Append(numberIncrement.UpperLimitChar);
+            }
+            while (number >= numberIncrement.Increment)
+            {
+                result.Append(numberIncrement.IncrementChar);
+                number -= numberIncrement.Increment;
             }
 
-            return result.ToString();
+            return (number, result.ToString());
         }
     }
 }

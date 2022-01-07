@@ -65,5 +65,14 @@ namespace Kata.Tests
         
             roman.Should().Be(expected);
         }
+        
+        [Theory]
+        [InlineData(40, "XD")]
+        public void GivenA40_ShouldReturnXD(int input, string expected)
+        {
+            var roman =  _converter.Convert(input);
+        
+            roman.Should().Be(expected);
+        }
     }
 }
