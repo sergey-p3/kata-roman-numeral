@@ -40,14 +40,6 @@ namespace Kata.Tests
         
         [Theory]
         [InlineData(10, "X")]
-        [InlineData(11, "XI")]
-        [InlineData(12, "XII")]
-        [InlineData(13, "XIII")]
-        [InlineData(14, "XIV")]
-        [InlineData(15, "XV")]
-        [InlineData(16, "XVI")]
-        [InlineData(17, "XVII")]
-        [InlineData(18, "XVIII")]
         [InlineData(19, "XIX")]
         public void GivenANumberBetween10And19_ShouldReturnAnXPlusNumbersBelow10(int input, string expected)
         {
@@ -57,9 +49,8 @@ namespace Kata.Tests
         }
         
         [Theory]
-        [InlineData(20, "XX")]
         [InlineData(30, "XXX")]
-        public void GivenANumberBetween20And29_ShouldReturnAXXPlusNumbersBelow10(int input, string expected)
+        public void GivenA30_ShouldReturnXXX(int input, string expected)
         {
             var roman =  _converter.Convert(input);
         
@@ -109,7 +100,7 @@ namespace Kata.Tests
         [Theory]
         [InlineData(400, "CD")]
         [InlineData(499, "CDXCIX")]
-        public void GivenA4xx_ShouldReturnCDxx(int input, string expected)
+        public void GivenA4xx_ShouldReturnCDx(int input, string expected)
         {
             var roman =  _converter.Convert(input);
         
@@ -120,6 +111,26 @@ namespace Kata.Tests
         [InlineData(500, "D")]
         [InlineData(849, "DCCCXLIX")]
         public void GivenA5xx_ShouldReturnDxx(int input, string expected)
+        {
+            var roman =  _converter.Convert(input);
+        
+            roman.Should().Be(expected);
+        }
+        
+        [Theory]
+        [InlineData(900, "CM")]
+        [InlineData(998, "CMXCVIII")]
+        public void GivenA9xx_ShouldReturnCMxx(int input, string expected)
+        {
+            var roman =  _converter.Convert(input);
+        
+            roman.Should().Be(expected);
+        }
+        
+        [Theory]
+        [InlineData(1000, "M")]
+        [InlineData(4984, "MMMMCMLXXXIV")]
+        public void GivenANumberGreaterOrEqual1000_ShouldReturnMxx(int input, string expected)
         {
             var roman =  _converter.Convert(input);
         
