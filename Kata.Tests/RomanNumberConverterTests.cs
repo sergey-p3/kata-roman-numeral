@@ -13,5 +13,11 @@ namespace Kata.Tests
         {
             Assert.Throws<ArgumentException>(() => _converter.Convert(0));
         }
+        
+        [Fact]
+        public void GivenANegative_ThrowArgumentException()
+        {
+            Assert.Throws<ArgumentException>(() => _converter.Convert(-1));
+        }
     }
 }
