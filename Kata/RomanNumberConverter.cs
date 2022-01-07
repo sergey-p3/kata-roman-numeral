@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Kata
 {
@@ -16,35 +18,38 @@ namespace Kata
                 return "nulla";
             }
 
-            var result = "";
-
-            for (int x = 0; x < 2 && i >= 10; x++)
+            var l = new Dictionary<int, (int, string)>
             {
-                result += "X";
-                i -= 10;
-            }
-            
-            result += SingleDigitConvert(i);
-
-            return result;
-        }
-
-        private static string SingleDigitConvert(int i)
-        {
-            return i switch
-            {
-                0 => "",
-                1 => "I",
-                2 => "II",
-                3 => "III",
-                4 => "IV",
-                5 => "V",
-                6 => "VI",
-                7 => "VII",
-                8 => "VIII",
-                9 => "IX",
-                _ => throw new NotSupportedException()
+                [10] = (1, "X"),
+                [5] = (1, "V"),
+                [1] = (1, "I")
             };
+
+            var result = new StringBuilder();
+
+            KeyValuePair<int, (int, string)> ?prev = null;
+            foreach (KeyValuePair<int, (int, string)> x in l)
+            {
+                if (prev != null)
+                {
+                    var prevBarrier = prev.Value.Key - prev.Value.Value.Item1;
+                    if (i >= prevBarrier)
+                    {
+                        i -= prevBarrier;
+                        result.Append(l[prev.Value.Value.Item1].Item2);
+                        result.Append(prev.Value.Value.Item2);
+                    }
+                }
+
+                while (i >= x.Key)
+                {
+                    result.Append(x.Value.Item2);
+                    i -= x.Key;
+                }
+                prev = x;
+            }
+
+            return result.ToString();
         }
     }
 }

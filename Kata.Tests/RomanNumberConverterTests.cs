@@ -58,15 +58,7 @@ namespace Kata.Tests
         
         [Theory]
         [InlineData(20, "XX")]
-        [InlineData(21, "XXI")]
-        [InlineData(22, "XXII")]
-        [InlineData(23, "XXIII")]
-        [InlineData(24, "XXIV")]
-        [InlineData(25, "XXV")]
-        [InlineData(26, "XXVI")]
-        [InlineData(27, "XXVII")]
-        [InlineData(28, "XXVIII")]
-        [InlineData(29, "XXIX")]
+        [InlineData(30, "XXX")]
         public void GivenANumberBetween20And29_ShouldReturnAXXPlusNumbersBelow10(int input, string expected)
         {
             var roman =  _converter.Convert(input);
