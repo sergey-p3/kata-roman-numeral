@@ -67,8 +67,9 @@ namespace Kata.Tests
         }
         
         [Theory]
-        [InlineData(40, "XD")]
-        public void GivenA40_ShouldReturnXD(int input, string expected)
+        [InlineData(40, "XL")]
+        [InlineData(49, "XLIX")]
+        public void GivenA4x_ShouldReturnXDx(int input, string expected)
         {
             var roman =  _converter.Convert(input);
         
