@@ -49,7 +49,7 @@ namespace Kata.Tests
         [InlineData(17, "XVII")]
         [InlineData(18, "XVIII")]
         [InlineData(19, "XIX")]
-        public void GivenANumberoBetween10And19_ShouldReturnAnXPlusNumbersBelow10(int input, string expected)
+        public void GivenANumberBetween10And19_ShouldReturnAnXPlusNumbersBelow10(int input, string expected)
         {
            var roman =  _converter.Convert(input);
         
@@ -67,7 +67,7 @@ namespace Kata.Tests
         [InlineData(27, "XXVII")]
         [InlineData(28, "XXVIII")]
         [InlineData(29, "XXIX")]
-        public void GivenANumberoBetween20And29_ShouldReturnAXXPlusNumbersBelow10(int input, string expected)
+        public void GivenANumberBetween20And29_ShouldReturnAXXPlusNumbersBelow10(int input, string expected)
         {
             var roman =  _converter.Convert(input);
         

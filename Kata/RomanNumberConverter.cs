@@ -18,7 +18,7 @@ namespace Kata
 
             var result = "";
 
-            if (i >= 10)
+            for (int x = 0; x < 2 && i >= 10; x++)
             {
                 result += "X";
                 i -= 10;
