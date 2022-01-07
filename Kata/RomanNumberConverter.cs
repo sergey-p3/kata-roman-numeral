@@ -16,16 +16,24 @@ namespace Kata
                 return "nulla";
             }
 
-            if (i < 10)
-                return SingleDigitConvert(i);
+            var result = "";
 
-            return "X";
+            if (i >= 10)
+            {
+                result += "X";
+                i -= 10;
+            }
+            
+            result += SingleDigitConvert(i);
+
+            return result;
         }
 
         private static string SingleDigitConvert(int i)
         {
             return i switch
             {
+                0 => "",
                 1 => "I",
                 2 => "II",
                 3 => "III",
