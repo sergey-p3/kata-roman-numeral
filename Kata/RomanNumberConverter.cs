@@ -10,6 +10,11 @@ namespace Kata
             {
                 throw new ArgumentException("Romans didn't understand non-positive numbers");
             }
+
+            if (i == 1)
+            {
+                return "I";
+            }
             throw new System.NotImplementedException();
         }
     }
