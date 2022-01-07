@@ -19,5 +19,14 @@ namespace Kata.Tests
         {
             Assert.Throws<ArgumentException>(() => _converter.Convert(-1));
         }
+        
+        [Theory]
+        [InlineData(1, "I")]
+        public void GivenA1_ShouldReturnAnI(int input, string expected)
+        {
+           var roman =  _converter.Convert(input);
+
+           roman.Should().Be(expected);
+        }
     }
 }
