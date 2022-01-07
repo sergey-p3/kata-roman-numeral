@@ -16,6 +16,14 @@ namespace Kata
                 return "nulla";
             }
 
+            if (i < 10)
+                return SingleDigitConvert(i);
+
+            return "X";
+        }
+
+        private static string SingleDigitConvert(int i)
+        {
             return i switch
             {
                 1 => "I",
@@ -27,8 +35,7 @@ namespace Kata
                 7 => "VII",
                 8 => "VIII",
                 9 => "IX",
-                10 => "X",
-                _ => throw new System.NotImplementedException()
+                _ => throw new NotSupportedException()
             };
         }
     }
