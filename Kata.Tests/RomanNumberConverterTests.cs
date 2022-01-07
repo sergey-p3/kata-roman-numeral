@@ -39,21 +39,21 @@ namespace Kata.Tests
            roman.Should().Be(expected);
         }
         
-        // [Theory]
-        // [InlineData(11, "XI")]
-        // [InlineData(12, "XII")]
-        // [InlineData(13, "XIII")]
-        // [InlineData(14, "XIV")]
-        // [InlineData(15, "XV")]
-        // [InlineData(16, "XVI")]
-        // [InlineData(17, "XVII")]
-        // [InlineData(18, "XVIII")]
-        // [InlineData(19, "XIX")]
-        // public void GivenAGreaterThan10_ShouldReturnAnXPlusNumbersBelow10(int input, string expected)
-        // {
-        //    var roman =  _converter.Convert(input);
-        //
-        //    roman.Should().Be(expected);
-        // }
+        [Theory]
+        [InlineData(11, "XI")]
+        [InlineData(12, "XII")]
+        [InlineData(13, "XIII")]
+        [InlineData(14, "XIV")]
+        [InlineData(15, "XV")]
+        [InlineData(16, "XVI")]
+        [InlineData(17, "XVII")]
+        [InlineData(18, "XVIII")]
+        [InlineData(19, "XIX")]
+        public void GivenAGreaterThan10_ShouldReturnAnXPlusNumbersBelow10(int input, string expected)
+        {
+           var roman =  _converter.Convert(input);
+        
+           roman.Should().Be(expected);
+        }
     }
 }
